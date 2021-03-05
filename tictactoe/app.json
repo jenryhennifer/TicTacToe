@@ -1,4 +1,6 @@
 {
-  "name": "tictactoe",
-  "displayName": "tictactoe"
+  "expo": {
+    "name": "Tic Tac Toe",
+    "slug": "tictactoe"
+  }
 }
