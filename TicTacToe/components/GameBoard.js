@@ -5,14 +5,38 @@ import { MaterialCommunityIcons as Icon } from 'react-native-vector-icons';
 //close / cirlce-outline
 
 export default class GameBoard extends Component {
+  //updates the game state and current player to keep track who plays where
+  constructor(props) {
+    super(props);
+    this.state = {
+      gameState: [],
+      currentPlayer: 1,
+    };
+  }
 
+  //when page loads game will start
+
+  componentDidMount() {
+    this.startGame();
+  }
+  //start game function to reset board
+  //0 = blank
+  startGame = () => {
+    this.setState({
+      gameState: [
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+      ],
+    });
+  };
 
   render() {
     return (
       <View style={styles.container}>
         <View style={{ flexDirection: 'row' }}>
           <View style={styles.square}>
-            <Icon name='close' style={styles.playerX}/>
+            <Icon name="" style={styles.playerX} />
           </View>
           <View style={styles.square} />
           <View style={styles.square} />
@@ -50,6 +74,6 @@ const styles = StyleSheet.create({
     fontSize: 75,
   },
   playerO: {
-      fontSize: 75
-  }
+    fontSize: 75,
+  },
 });
