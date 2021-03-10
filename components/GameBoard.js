@@ -139,19 +139,19 @@ export default class GameBoard extends Component {
       <View style={styles.container}>
         <View style={{ flexDirection: 'row' }}>
           <TouchableOpacity
-            style={styles.square}
+            style={[styles.square, {borderLeftWidth: 0, borderTopWidth: 0}]}
             onPress={() => this.onClick(0, 0)}
           >
             {this.renderIcon(0, 0)}
           </TouchableOpacity>
           <TouchableOpacity
-            style={styles.square}
+            style={[styles.square, {borderTopWidth: 0}]}
             onPress={() => this.onClick(0, 1)}
           >
             {this.renderIcon(0, 1)}
           </TouchableOpacity>
           <TouchableOpacity
-            style={styles.square}
+            style={[styles.square, {borderRightWidth: 0, borderTopWidth: 0}]}
             onPress={() => this.onClick(0, 2)}
           >
             {this.renderIcon(0, 2)}
@@ -160,7 +160,7 @@ export default class GameBoard extends Component {
 
         <View style={{ flexDirection: 'row' }}>
           <TouchableOpacity
-            style={styles.square}
+            style={[styles.square, {borderLeftWidth: 0}]}
             onPress={() => this.onClick(1, 0)}
           >
             {this.renderIcon(1, 0)}
@@ -172,7 +172,7 @@ export default class GameBoard extends Component {
             {this.renderIcon(1, 1)}
           </TouchableOpacity>
           <TouchableOpacity
-            style={styles.square}
+            style={[styles.square, {borderRightWidth: 0}]}
             onPress={() => this.onClick(1, 2)}
           >
             {this.renderIcon(1, 2)}
@@ -181,19 +181,19 @@ export default class GameBoard extends Component {
 
         <View style={{ flexDirection: 'row' }}>
           <TouchableOpacity
-            style={styles.square}
+            style={[styles.square, {borderLeftWidth: 0, borderBottomWidth: 0}]}
             onPress={() => this.onClick(2, 0)}
           >
             {this.renderIcon(2, 0)}
           </TouchableOpacity>
           <TouchableOpacity
-            style={styles.square}
+            style={[styles.square, {borderBottomWidth: 0}]}
             onPress={() => this.onClick(2, 1)}
           >
             {this.renderIcon(2, 1)}
           </TouchableOpacity>
           <TouchableOpacity
-            style={styles.square}
+            style={[styles.square, {borderRightWidth: 0, borderBottomWidth: 0}]}
             onPress={() => this.onClick(2, 2)}
           >
             {this.renderIcon(2, 2)}
