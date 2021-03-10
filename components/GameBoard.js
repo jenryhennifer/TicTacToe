@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import {
-  View,
-  Text,
-  StyleSheet,
   TouchableOpacity,
+  View,
   Alert,
   Button,
 } from 'react-native';
 import { MaterialCommunityIcons as Icon } from 'react-native-vector-icons';
+
+import styles from './Styles'
 
 //close / cirlce-outline
 
