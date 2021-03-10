@@ -209,22 +209,3 @@ export default class GameBoard extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: 'white',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: '25%',
-  },
-  square: {
-    borderWidth: 1,
-    width: 100,
-    height: 100,
-  },
-  playerX: {
-    fontSize: 75,
-  },
-  playerO: {
-    fontSize: 75,
-  },
-});
