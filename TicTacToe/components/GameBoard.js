@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Alert,
+  Button,
+} from 'react-native';
 import { MaterialCommunityIcons as Icon } from 'react-native-vector-icons';
 
 //close / cirlce-outline
@@ -43,7 +50,7 @@ export default class GameBoard extends Component {
       case 1:
         return <Icon name="close" style={styles.playerX} />;
       //player 2
-      case 2:
+      case -1:
         return <Icon name="circle-outline" style={styles.playerO} />;
       //blanik
       default:
@@ -51,8 +58,65 @@ export default class GameBoard extends Component {
     }
   };
 
+  //1 if player 1 --- 2 player -1 --- 0 tie
+  checkWinner = () => {
+    var array = this.state.gameState;
+    const totTiles = 3;
+    var sum;
+
+    //rows -- adds column 1,2,3 in each row
+    for (var i = 0; i < totTiles; i++) {
+      sum = array[i][0] + array[i][i] + array[i][2];
+      if (sum == 3) {
+        return 1;
+      } else if (sum == -3) {
+        return -1;
+      }
+    }
+    //columns -- adds row 1,2,3 in each column
+    for (var i = 0; i < totTiles; i++) {
+      sum = array[0][i] + array[1][i] + array[2][i];
+      if (sum == 3) {
+        return 1;
+      } else if (sum == -3) {
+        return -1;
+      }
+    }
+    //diagonal right
+    var diagonalRight = array[0][0] + array[1][1] + array[2][2];
+    if (diagonalRight == 3) {
+      return 1;
+    } else if (diagonalRight == -3) {
+      return -1;
+    }
+    // diagonal left
+    var diagonalLeft = array[0][2] + array[1][1] + array[2][0];
+    if (diagonalLeft == 3) {
+      return 1;
+    } else if (diagonalLeft == -3) {
+      return -1;
+    }
+
+    // no winner
+    return 0;
+  };
   //player 1 = X ----- player 2 = O ------ default 0 = blank
   onClick = (row, col) => {
+    //Winner Check
+    var winnerCheck = this.checkWinner();
+    if (winnerCheck == 1) {
+      Alert.alert('player 1 Wins!');
+      this.startGame();
+    } else if (winnerCheck == -1) {
+      Alert.alert('player 2 Wins!');
+      this.startGame();
+    }
+    var value = this.state.gameState[row][col];
+
+    if (value !== 0) {
+      return;
+    }
+
     var player = this.state.currentPlayer;
     var array = this.state.gameState.slice();
 
@@ -63,12 +127,13 @@ export default class GameBoard extends Component {
     //changes current player
     switch (player) {
       case 1:
-        return (this.state.currentPlayer = 2);
-      case 2:
+        return (this.state.currentPlayer = -1);
+      case -1:
         return (this.state.currentPlayer = 1);
     }
   };
 
+  //gameboard
   render() {
     return (
       <View style={styles.container}>
@@ -134,6 +199,11 @@ export default class GameBoard extends Component {
             {this.renderIcon(2, 2)}
           </TouchableOpacity>
         </View>
+        <Button
+          style={styles.button}
+          title="New Game"
+          onPress={this.startGame}
+        />
       </View>
     );
   }
