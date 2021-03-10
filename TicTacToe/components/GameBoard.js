@@ -28,13 +28,14 @@ export default class GameBoard extends Component {
   startGame = () => {
     this.setState({
       gameState: [
-        [1, 0, 0],
-        [0, 1, 0],
-        [0, 0, 1],
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
       ],
     });
   };
 
+  //switch statement to handle wich icon needs to be rendered
   renderIcon = (row, col) => {
     var value = this.state.gameState[row][col];
     switch (value) {
@@ -47,42 +48,72 @@ export default class GameBoard extends Component {
     }
   };
 
-  click = () => {
-      
-
-  }
+  click = () => {};
 
   render() {
     return (
       <View style={styles.container}>
         <View style={{ flexDirection: 'row' }}>
-          <TouchableOpacity style={styles.square} onPress={() => this.click(0,0)}>
+          <TouchableOpacity
+            style={styles.square}
+            onPress={() => this.click(0, 0)}
+          >
             {this.renderIcon(0, 0)}
           </TouchableOpacity>
-          <TouchableOpacity style={styles.square} onPress={() => this.click(0,1)}>
+          <TouchableOpacity
+            style={styles.square}
+            onPress={() => this.click(0, 1)}
+          >
             {this.renderIcon(0, 1)}
           </TouchableOpacity>
-          <TouchableOpacity style={styles.square} onPress={() => this.click(0,2)}>
+          <TouchableOpacity
+            style={styles.square}
+            onPress={() => this.click(0, 2)}
+          >
             {this.renderIcon(0, 2)}
           </TouchableOpacity>
         </View>
 
         <View style={{ flexDirection: 'row' }}>
-          <TouchableOpacity style={styles.square}>
+          <TouchableOpacity
+            style={styles.square}
+            onPress={() => this.click(1, 0)}
+          >
             {this.renderIcon(1, 0)}
           </TouchableOpacity>
-          <TouchableOpacity style={styles.square}>
+          <TouchableOpacity
+            style={styles.square}
+            onPress={() => this.click(1, 1)}
+          >
             {this.renderIcon(1, 1)}
           </TouchableOpacity>
-          <TouchableOpacity style={styles.square}>
+          <TouchableOpacity
+            style={styles.square}
+            onPress={() => this.click(1, 2)}
+          >
             {this.renderIcon(1, 2)}
           </TouchableOpacity>
         </View>
 
         <View style={{ flexDirection: 'row' }}>
-          <TouchableOpacity style={styles.square}>{this.renderIcon(2, 0)}</TouchableOpacity>
-          <TouchableOpacity style={styles.square}>{this.renderIcon(2, 1)}</TouchableOpacity>
-          <TouchableOpacity style={styles.square}>{this.renderIcon(2, 2)}</TouchableOpacity>
+          <TouchableOpacity
+            style={styles.square}
+            onPress={() => this.click(2, 0)}
+          >
+            {this.renderIcon(2, 0)}
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.square}
+            onPress={() => this.click(2, 1)}
+          >
+            {this.renderIcon(2, 1)}
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.square}
+            onPress={() => this.click(2, 2)}
+          >
+            {this.renderIcon(2, 2)}
+          </TouchableOpacity>
         </View>
       </View>
     );
