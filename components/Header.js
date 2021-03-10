@@ -1,25 +1,13 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
+//Stylesheet
+import styles from './Styles'
+
 export default function Header(){
     return(
         <View style={styles.header}>
-            <Text style={styles.headerText}>Tic Tac Toe</Text>
+            <Text style={styles.headerText}>TIC TAC TOE</Text>
         </View>
     ) 
 }
-
-const styles = StyleSheet.create({
-    header: {
-        justifyContent: 'center',
-        backgroundColor: 'lightgray',
-        alignItems: 'center',
-        height: 110,
-        paddingTop: 50,
-        position: 'relative',
-    },
-    headerText:{
-        fontSize: 25,
-        fontWeight: 'bold'
-    }
-})

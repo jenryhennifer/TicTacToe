@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
+
+//React Native
 import {
   TouchableOpacity,
   View,
   Alert,
   Button,
 } from 'react-native';
+
+//X/O icons
 import { MaterialCommunityIcons as Icon } from 'react-native-vector-icons';
 
+//Stylesheet
 import styles from './Styles'
-
-//close / cirlce-outline
 
 export default class GameBoard extends Component {
   //updates the game state and current player to keep track who plays where
@@ -40,6 +43,7 @@ export default class GameBoard extends Component {
         [0, 0, 0],
       ],
     });
+    this.setState({currentPlayer:1})
   };
 
   //switch statement to handle wich icon needs to be rendered
@@ -66,7 +70,7 @@ export default class GameBoard extends Component {
 
     //rows -- adds column 1,2,3 in each row
     for (var i = 0; i < totTiles; i++) {
-      sum = array[i][0] + array[i][i] + array[i][2];
+      sum = array[i][0] + array[i][1] + array[i][2];
       if (sum == 3) {
         return 1;
       } else if (sum == -3) {
@@ -110,7 +114,8 @@ export default class GameBoard extends Component {
     } else if (winnerCheck == -1) {
       Alert.alert('player 2 Wins!');
       this.startGame();
-    }
+    }else{
+
     var value = this.state.gameState[row][col];
 
     if (value !== 0) {
@@ -123,7 +128,7 @@ export default class GameBoard extends Component {
     //updates gamestate with proper player
     array[row][col] = player;
     this.setState({ gameState: array });
-
+  }
     //changes current player
     switch (player) {
       case 1:
@@ -131,6 +136,7 @@ export default class GameBoard extends Component {
       case -1:
         return (this.state.currentPlayer = 1);
     }
+
   };
 
   //gameboard
@@ -200,8 +206,9 @@ export default class GameBoard extends Component {
           </TouchableOpacity>
         </View>
         <Button
-          style={styles.button}
           title="New Game"
+          color='#6eceda'
+          style={styles.button}
           onPress={this.startGame}
         />
       </View>
