@@ -1,6 +1,7 @@
 # TicTacToe
 practicing react native
 
+![Demo](demo.gif)
 
 ## Instalation
 
